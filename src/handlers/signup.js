@@ -1,23 +1,51 @@
 /*
-    current curl:
-
-    curl --location --request POST 'https://6r3j4knye0.execute-api.us-east-1.amazonaws.com/Prod/signup' \
-    --data-raw ''
+    curl --location --request POST 'https://o5lj16yx8l.execute-api.us-east-1.amazonaws.com/Prod/signup' \
+    --header 'Content-Type: application/json' \
+    --data-raw '{"email":"johngjackson1@gmail.com", "password":"dsfdDFDF!3424"}'
 
     will return:
 
-    API is Not Yet Implemented
+    User has been signed up successfully.
 */
 
+const AWS = require("aws-sdk");
+
 exports.signupHandler = async (event) => {
-  console.info("received:", event);
+  const cognitoIdentityServiceProvider =
+    new AWS.CognitoIdentityServiceProvider();
 
-  let response = {};
+  console.log(event);
 
-  response = {
-    statusCode: 200,
-    body: "API is Not Yet Implemented",
-  };
+  try {
+    const { email, password } = JSON.parse(event.body);
 
-  return response;
+    const params = {
+      ClientId: "qf3oj4jkp9p1agcnkdmnm7gbj",
+      Password: password,
+      Username: email,
+      UserAttributes: [
+        {
+          Name: "email",
+          Value: email,
+        },
+      ],
+    };
+
+    await cognitoIdentityServiceProvider.signUp(params).promise();
+
+    return {
+      statusCode: 200,
+      body: JSON.stringify({
+        message: "User has been signed up successfully.",
+      }),
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      statusCode: 500,
+      body: JSON.stringify({
+        error: error.message,
+      }),
+    };
+  }
 };
