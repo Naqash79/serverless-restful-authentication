@@ -20,7 +20,7 @@ Resources:
           Properties:
             Path: /signup
             Method: POST
-  ConfirmSignUp: 
+  ConfirmSignUpFunction: 
     Type: AWS::Serverless::Function
     Properties:
       Handler: src/handlers/confirm.confirmHandler
@@ -35,6 +35,22 @@ Resources:
           Type: Api
           Properties:
             Path: /confirm
+            Method: POST
+  LoginFunction: 
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/login.loginHandler
+      Runtime: nodejs16.x
+      Architectures:
+        - x86_64
+      MemorySize: 128
+      Timeout: 100
+      Description: login
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            Path: /login
             Method: POST
 
 Outputs:

@@ -2,7 +2,7 @@
 
   After the user signs up, AWS will send an email to the user containing a confirmation code. This confirmation code must be used to confirm the account and receive the authentication token.
 
-  curl --location --request POST 'https://0ivogyipmi.execute-api.us-east-1.amazonaws.com/Prod/confirm' \
+  curl --location --request POST 'https://t8d33bil8j.execute-api.us-east-1.amazonaws.com/Prod/confirm' \
   --header 'Content-Type: application/json' \
   --data-raw '{"email":"boxaka5531@ekcsoft.com", "password":"dsfdDFDF!3424", "confirmationCode": "778797"}'
 
