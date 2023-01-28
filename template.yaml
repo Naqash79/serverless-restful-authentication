@@ -84,6 +84,22 @@ Resources:
           Properties:
             Path: /reset
             Method: POST
+  ConfirmResetPasswordFunction: 
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/resetConfirm.resetConfirmHandler
+      Runtime: nodejs16.x
+      Architectures:
+        - x86_64
+      MemorySize: 128
+      Timeout: 100
+      Description: Confirm Password Reset
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            Path: /confirmReset
+            Method: POST
 
 Outputs:
   WebEndpoint:
