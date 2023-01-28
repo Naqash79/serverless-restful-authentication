@@ -30,7 +30,7 @@ exports.loginHandler = async (event) => {
     const authResponse = await cognitoIdentityServiceProvider
       .initiateAuth(authParams)
       .promise();
-    const token = authResponse.AuthenticationResult.IdToken;
+    const token = authResponse.AuthenticationResult;
     return {
       statusCode: 200,
       body: JSON.stringify({
