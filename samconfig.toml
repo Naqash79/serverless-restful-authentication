@@ -2,9 +2,9 @@ version = 0.1
 [default]
 [default.deploy]
 [default.deploy.parameters]
-stack_name = "auth-portal-51"
+stack_name = "auth-portal-53"
 s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-5u4n9ocaio18"
-s3_prefix = "auth-portal-51"
+s3_prefix = "auth-portal-53"
 region = "us-east-1"
 confirm_changeset = true
 capabilities = "CAPABILITY_IAM"

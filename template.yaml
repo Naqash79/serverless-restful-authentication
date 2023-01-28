@@ -68,6 +68,22 @@ Resources:
           Properties:
             Path: /refresh
             Method: POST
+  ResetPasswordFunction: 
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/reset.resetHandler
+      Runtime: nodejs16.x
+      Architectures:
+        - x86_64
+      MemorySize: 128
+      Timeout: 100
+      Description: Reset Password
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            Path: /reset
+            Method: POST
 
 Outputs:
   WebEndpoint:
