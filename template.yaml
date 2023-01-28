@@ -52,6 +52,22 @@ Resources:
           Properties:
             Path: /login
             Method: POST
+  RefreshTokenFunction: 
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/refresh.refreshHandler
+      Runtime: nodejs16.x
+      Architectures:
+        - x86_64
+      MemorySize: 128
+      Timeout: 100
+      Description: Refresh token
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            Path: /refresh
+            Method: POST
 
 Outputs:
   WebEndpoint:
